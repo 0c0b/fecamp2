@@ -1,0 +1,12 @@
+@charset "utf-8";
+/*캐릭터 셋을 설정하기를 권장한다-설정 하지 않으면 css에서 가끔 깨질 수 있다.*/
+.container{
+	max-width: 960px;
+	background: silver;
+	margin: 0 auto;
+	/*컨트롤 스페이스 = 유효한 값을 볼 수 있다.*/
+}
+.header>h1{
+	/* '>'이것은 자식 컨텐츠를 가리킨다.*/
+	/* 무조건 class="header" 밑에 있는 h1 만 설정한다.*/
+}
