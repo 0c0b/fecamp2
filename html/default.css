@@ -59,9 +59,10 @@ body{
 	box-shadow: 0 0 4px #aaa;
 }
 
-main,
+/*main,
 .lnb,
-.aside{margin: 15px;}
+.aside{margin: 15px;}*/
+
 main{
 	background: #fff;
 	box-shadow: 0 0 4px #999;
@@ -257,6 +258,20 @@ background: #666이미지와 배경색이 같이 있을 경우 배경색이 먼�
 
 /*Tablet & Desktop*/
 @media only all and (min-width: 768px){
+	.gnb>button{
+		display: none;
+	}
+	.search{
+		position: absolute;
+		top: 20px;
+		right: 10px;
+		margin: 0;
+		width: 200px;
+	}
+	.gnb>ul{
+		display: block !important;
+	}
+	/*!important 가장 높은 우선순위가 된다.*/
 }
 
 /*Tablet*/
