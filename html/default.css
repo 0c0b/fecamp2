@@ -1,6 +1,4 @@
 @charset "utf-8";
-/*캐릭터 셋을 설정하기를 권장한다-설정 하지 않으면 css에서 가끔 깨질 수 있다.*/
-/*html reset*/
 header, 
 footer, 
 section, 
@@ -12,18 +10,259 @@ figure,
 figcaption{
 	display: block;
 }
+html,
+body{
+	min-height: 100%;
+}
+body{
+	margin: 0;
+	min-width: 320px;
+}
+body, 
+table, 
+button, 
+input, 
+textarea, 
+select{
+	font-size: 14px;
+}
+
 
 /*All*/
+body{
+	background: -webkit-linear-gradient(#ccc,#fff);
+	background: -moz-linear-gradient(#ccc,#fff);
+	background: -ms-linear-gradient(#ccc,#fff);
+	background: -o-linear-gradient(#ccc,#fff);
+	background: linear-gradient(#ccc,#fff);
+}
+.header>h1{
+	font-size: 28px;
+	text-shadow:1px 1px 2px #fff;
+}
+.search>input{
+	vertical-align: top;
+	border-radius: 3px;
+}
+.search>[type="search"]{
+	border: 1px solid #ccc;
+	height: 32px;
+	width: 160px;
+	box-shadow: 0 0 4px #ccc inset;
+}
+
+.search>[type="submit"]{
+	width: 50px;
+	height: 32px;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0 0 4px #aaa;
+}
+
+main,
+.lnb,
+.aside{margin: 15px;}
+main{
+	background: #fff;
+	box-shadow: 0 0 4px #999;
+	box-shadow: 0 0 4px rgba(0,0,0,0.3);
+	border-radius: 8px;
+	min-height: 300px;
+}
+
+
+.lnb ul,
+.aside ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+.lnb{
+	text-shadow:1px 1px 0 #333;
+}
+.lnb h2{
+	background: #444;
+	border-radius: 4px 4px 0 0;
+	font-size: 14px;
+	color: #fff;
+	padding: 0 10px;
+	line-height: 32px;
+	margin: 0;
+}
+
+.lnb li{
+	margin: 1px 0;
+}
+.lnb a{
+	display: block;
+	background: #777;
+	padding: 0 10px;
+	height: 32px;
+	line-height: 33px;
+	text-decoration: none;
+	color: #fff;
+	-webkit-transition:.2s;
+	-moz-transition:.2s;
+	-ms-transition:.2s;
+	-o-transition:.2s;
+	transition:.5s;
+}
+
+.lnb :last-child>a{
+	border-radius: 0 0 4px 4px;
+}
+
+.lnb a:hover/*마우스로 선택했을 때*/,
+.lnb a:focus/*키보드로 선택되었을 때*/{
+	background: #555;
+}
+
+.aside{
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 0 10px;
+}
+
+
+.aside h2{
+	font-size: 14px;
+	margin: 0;
+	border-bottom: 1px solid #ddd;
+	line-height: 32px;
+}
+
+.aside ul{
+	padding: 10px 0;
+}
+
+.aside a{
+	display: block;
+	line-height: 32px;
+}
+
+.footer{
+	border-top: 1px dotted #ccc;
+}
+
+.footer>p{
+	text-align: center;
+	color: #959595;
+}
 
 /*Mobile*/
+.container{
+	margin: 0 10px;
+}
+.skip{
+	display: none;
+}
+.gnb>h2{
+	height: 1px;
+	/*0으로 하지 않는 이유는 면적이 없으면 화면낭독기가 읽지 않는 경우가 있기 때문*/
+	position: absolute;
+	/*z축으로 붕 떠서 형제들이 밀려나지 않는다.*/
+	overflow: hidden;
+	/*넘치는 것은 숨겨짐*/
+	margin: 0;
+}
+/*화면에서 숨기면서 화면 낭독기가 읽을 수 있게 만든다.*/
+.gnb>button{
+	border: 0;
+	background: #666;
+	width: 40px;
+	height: 36px;
+	padding: 36px 0 0 0;
+	overflow: hidden;
+	border-radius: 3px;
+	position: absolute;
+	/*???????????????? 밑에 렐러티브기준으로 위치 잡는 앱솔루트는는?*/
+	cursor: pointer;
+	top: 15px;
+	right: 10px;
+}
+/*box-sizing이 보더박스일 경우 패딩값과 height값 중 큰것만 출력한다.*/
+/*아닐 경우 두 값이 더해짐*/
+/*글씨는 패딩값때문에 밖으로 삐져 나가 있는 상태*/
+/*원래는 표시가 안되는 상태 이지만 몇몇 브라우저에서는 보일 수 있다.*/
+/*그래서 오버플로우:히든값을 준다.*/
+/*	background: #666 url(이미지 주소) no-repeat;
+background: #666이미지와 배경색이 같이 있을 경우 배경색이 먼저 나오고 그 위에 이미지 깔림  url(이미지 주소) no-repeat이거 선언 안하면 계속 바둑판처럼 반복됨; */
+.gnb>button:before{
+	content:"";
+	position: absolute;
+	/*position: relative;를 기준으로 위치 설정*/
+	top: 4px;
+	left: 4px;
+	width: 32px;
+	height: 4px;
+	border-top: 12px double #fff;
+	border-bottom: 12px double #fff;
+}
+/*줄 만드는거 (햄버거메뉴) 다시 설명 듣고 싶다 ㅠ */
+.gnb>ul{
+	background: #666;
+	border-radius: 4px;
+	overflow: hidden;
+	display: none;
+}
+.gnb ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.gnb a{
+	display: block;
+	background: #666;
+	color: #fff;
+	line-height: 32px;
+	text-decoration: none;
+	padding: 0 10px;
+	white-space: nowrap;
+	/*줄바꿈 금지 속성*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/*... 으로 표시 인라인으로 된 경우엔 적용되지 않음*/
+}
+.gnb>ul>li>a{
+	background: #444;
+}
+.gnb li li{
+	border-top: 1px dotted #444;
+}
+/*.gnb>ul>li>ul>li{
+	border-top: 1px dotted #444;
+}
+선택자를 줄일 수 있다.*/
+.gnb li li:first-child{
+	border:0;
+}
+.search{
+	margin: 15px 0;
+	padding: 0 60px 0 0;
+	position: relative;
+}
+.search>[type="search"]{
+	display: block;
+	width: 100%;
+}
+.search>[type="submit"]{
+	width: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
 
 /*Tablet & Desktop*/
-@media (min-width: 768px){
-	body{
-		background: red;
-	}
+@media only all and (min-width: 768px){
 }
 
 /*Tablet*/
+@media (min-width: 768px) and (max-width: 1024px){
+}
 
 /*Desktop*/
+@media (min-width: 1025px){
+}
